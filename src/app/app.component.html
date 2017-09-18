@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<!-- <ul>
+  <li *ngFor="let item of items | async">
+    {{item.$key}}: {{item.$value}}
+  </li>
+</ul> -->
+<!-- OR -->
+<h1>--------This is POC for reading data from Firebase---------</h1>
+
+<ul>
+  <li *ngFor="let item of items">
+    {{ item.$key }}: {{ item.$value }}
+  </li>
+</ul>

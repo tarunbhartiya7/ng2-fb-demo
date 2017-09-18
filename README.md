@@ -25,3 +25,53 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Steps to proceed:
+---------------------
+
+1.Go to firebase - console - create a new project
+
+2.Go to database and enter some data
+
+3.You will see some security warnings, so go to rules and set read and write to true.
+"rules": {
+    ".read": "true",
+    ".write": "true"
+ }
+
+4.Using angular 2 cli create a blank project
+
+5.Then install angularfire2 and firebase setups using npm and save them in package.json
+npm install angularfire2 firebase --save
+
+6.in the src-environments - create a firebase.config.ts
+export const firebaseConfig = {
+	//copy paste contents from firebase configuration
+	//This will include apiKey, authDomain, databaseUrl, storageBucket
+}
+
+7.import above firebaseConfig and angularfiremodule from angularfire2 in app.module.ts
+
+8.In the same file in imports section, 
+AngularFireModule.initializeApp(firebaseConfig)
+
+9.app.component.ts looks like this:
+import { Component } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'app works!';
+  items: FirebaseListObservable<any[]>;
+
+  constructor(private af: AngularFire){
+    this.items = af.database.list('/items');
+  }
+}
+
+
+
