@@ -73,5 +73,16 @@ export class AppComponent {
   }
 }
 
+Publish on github pages
+-----------------------
+Run:
+npm i -g angular-cli-ghpages
+
+ng build --prod --base-href https://tarunbhartiya7.github.io/ng2-fb-demo/
+
+ngh
+
+Go to https://tarunbhartiya7.github.io/ng2-fb-demo/ once you get successfully published....Hurray!!!!
+
 
 
